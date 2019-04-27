@@ -1,0 +1,28 @@
+From 8a7f05a9017dddc535739e61ceaa089d1a3dcaf2 Mon Sep 17 00:00:00 2001
+From: Donjan Rodic <bryonak@freenet.de>
+Date: Wed, 26 Sep 2012 11:17:09 +0200
+Subject: [PATCH 6/8] updated ToDo
+
+---
+ ToDo | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/ToDo b/ToDo
+index 3a5eec9..3708dc2 100644
+--- a/ToDo
++++ b/ToDo
+@@ -24,6 +24,11 @@ gnuclad-cladogram: add sortkey by name reverse and by date reverse? (treemode 2?
+ gnuclad: implement ARGB in Color constructors
+ generator/svg: implement matching transparency settings
+ 
++gnuclad: reimplement parser/generator inclusion in modules.hpp (or Makefile.am)
++	 preprocessor array (headerfile, cli trigger, file extension)
++
++gnuclad: reimplement config options using ArgumentParser
++
+ conf: add option to ignore connectors
+ conf: use std::map and Option objects for conf options
+ conf: multi line syntax in conf file with \
+-- 
+2.21.0
+
