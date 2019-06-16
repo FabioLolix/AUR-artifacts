@@ -1,0 +1,14 @@
+diff --git a/Guitar.pro b/Guitar.pro
+index ecaf4f2..30525d2 100644
+--- a/Guitar.pro
++++ b/Guitar.pro
+@@ -71,8 +71,8 @@ win32:gcc {
+ }
+ 
+ !haiku {
+-	unix:CONFIG(debug, debug|release):LIBS += $$PWD/_bin/libzd.a
+-	unix:CONFIG(release, debug|release):LIBS += $$PWD/_bin/libz.a
++	unix:CONFIG(debug, debug|release):LIBS += -lz
++	unix:CONFIG(release, debug|release):LIBS += -lz
+ 	#unix:LIBS += -lz
+ }
