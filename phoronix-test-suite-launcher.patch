@@ -1,0 +1,4 @@
+36c36
+< 	export PTS_DIR=$(readlink -f `dirname $0`)
+---
+> 	export PTS_DIR=/usr/share/phoronix-test-suite
