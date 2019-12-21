@@ -1,0 +1,4 @@
+32c32
+< #include "imagedownloader.h"
+---
+> #include "../imagedownloader.h"
