@@ -1,0 +1,6 @@
+10,11c10
+< Path=/usr/lib/LANShare
+< Exec=/usr/lib/LANShare/LANShare.sh
+---
+> Exec=/usr/bin/LANShare
+
