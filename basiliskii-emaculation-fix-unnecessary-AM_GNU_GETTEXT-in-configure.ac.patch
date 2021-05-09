@@ -1,0 +1,27 @@
+From 8e31586d37a6984c265f4392647b4a449fc36b4f Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 2 May 2021 15:59:02 +0200
+Subject: [PATCH] fix unnecessary-AM_GNU_GETTEXT-in-configure.ac
+
+---
+ BasiliskII/src/Unix/configure.ac | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/BasiliskII/src/Unix/configure.ac b/BasiliskII/src/Unix/configure.ac
+index 4903a1a9..92bf7354 100755
+--- a/BasiliskII/src/Unix/configure.ac
++++ b/BasiliskII/src/Unix/configure.ac
+@@ -475,10 +475,6 @@ if [[ "x$WANT_GTK" = "xgtk" ]]; then
+   AM_PATH_GTK(1.2.0, [
+     GUI_CFLAGS="$GTK_CFLAGS"
+     GUI_LIBS="$GTK_LIBS"
+-    dnl somehow, <gnome-i18n.h> would redefine gettext() to nothing if
+-    dnl ENABLE_NLS is not set, thusly conflicting with C++ <string> which
+-    dnl includes <libintl.h>
+-    AM_GNU_GETTEXT
+     B2_PATH_GNOMEUI([
+       AC_DEFINE(HAVE_GNOMEUI, 1, [Define if libgnomeui is available.])
+       GUI_CFLAGS="$GUI_CFLAGS $GNOMEUI_CFLAGS"
+-- 
+2.31.1
+

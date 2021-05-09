@@ -1,0 +1,27 @@
+From 09ac86d2fe7a8d1cd5bf794c20668c9476f16d09 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sat, 8 May 2021 22:29:20 +0200
+Subject: [PATCH] no tar.gz thanks
+
+---
+ Installer/Makefile/Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/Installer/Makefile/Makefile b/Installer/Makefile/Makefile
+index 550e7b9f1..fc2884154 100755
+--- a/Installer/Makefile/Makefile
++++ b/Installer/Makefile/Makefile
+@@ -72,10 +72,6 @@ package: build
+ 	if [ -e "duplicati.tar.gz" ]; then \
+ 		rm -rf "duplicati.tar.gz"; \
+ 	fi
+-	
+-	tar -C "$(PACKAGE_DIR)" -cf "duplicati.tar" .
+-	gzip --best "duplicati.tar"
+-
+ clean:
+ 	(find "$(SOURCE_DIR)" -type d -name bin -exec rm -rf "{}" \; &> /dev/null) || echo "bin cleaned"
+ 	(find "$(SOURCE_DIR)" -type d -name obj -exec rm -rf "{}" \; &> /dev/null) || echo "obj cleaned"
+-- 
+2.31.1
+

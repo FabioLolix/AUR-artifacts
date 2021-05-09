@@ -1,0 +1,31 @@
+From 21fdecaf850104a38ab00620f35436cb434053fc Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 2 May 2021 14:05:52 +0200
+Subject: [PATCH] =?UTF-8?q?unnecessary=20=E2=80=98AM=5FGNU=5FGETTEXT?=
+ =?UTF-8?q?=E2=80=99=20in=20=E2=80=98configure.ac=E2=80=99?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ BasiliskII/src/Unix/configure.ac | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/BasiliskII/src/Unix/configure.ac b/BasiliskII/src/Unix/configure.ac
+index b405b2ce..502a5c3d 100644
+--- a/BasiliskII/src/Unix/configure.ac
++++ b/BasiliskII/src/Unix/configure.ac
+@@ -483,10 +483,6 @@ if [[ "x$WANT_GTK" = "xgtk" ]]; then
+   AM_PATH_GTK(1.2.0, [
+     GUI_CFLAGS="$GTK_CFLAGS"
+     GUI_LIBS="$GTK_LIBS"
+-    dnl somehow, <gnome-i18n.h> would redefine gettext() to nothing if
+-    dnl ENABLE_NLS is not set, thusly conflicting with C++ <string> which
+-    dnl includes <libintl.h>
+-    AM_GNU_GETTEXT([external])
+     B2_PATH_GNOMEUI([
+       AC_DEFINE(HAVE_GNOMEUI, 1, [Define if libgnomeui is available.])
+       GUI_CFLAGS="$GUI_CFLAGS $GNOMEUI_CFLAGS"
+-- 
+2.31.1
+
