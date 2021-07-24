@@ -1,0 +1,25 @@
+From 0fb5a70caf5a247e536c3b2f552d62de6a5f64c0 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sat, 24 Jul 2021 12:39:43 +0200
+Subject: [PATCH] modify filetype.h include
+
+---
+ src/ApplicationGlobal.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ApplicationGlobal.h b/src/ApplicationGlobal.h
+index a6fd7b1..e976e2c 100644
+--- a/src/ApplicationGlobal.h
++++ b/src/ApplicationGlobal.h
+@@ -3,7 +3,7 @@
+ 
+ #include <QColor>
+ #include <QString>
+-#include <filetype/filetype.h>
++#include "../filetype/filetype.h"
+ #include "Theme.h"
+ #include "main.h"
+ 
+-- 
+2.32.0
+
