@@ -1,0 +1,25 @@
+From 4608fcf7d9a2deac4c0456e91eb62d9054517ee1 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Thu, 19 Aug 2021 13:50:22 +0200
+Subject: [PATCH] Fix translations path
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b11eb64..a3ee022 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,7 +61,7 @@ endif()
+ 
+ find_package(Qt5 5.9 COMPONENTS ${QT_MODULES} LinguistTools REQUIRED)
+ 
+-set(QT_TRANSLATIONS_DIR "${Qt5_DIR}/../../../translations")
++set(QT_TRANSLATIONS_DIR "/usr/share/qt/translations")
+ 
+ if(APPLE)
+   foreach(QT_MODULE ${QT_MODULES})
+-- 
+2.32.0
+
