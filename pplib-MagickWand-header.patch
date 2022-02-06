@@ -1,0 +1,25 @@
+From 456c4a81b7dd506d82940a58164edc7e584df1eb Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 6 Feb 2022 16:02:52 +0100
+Subject: [PATCH] MagickWand header
+
+---
+ src/grafix/ImageFilter_ImageMagick.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/grafix/ImageFilter_ImageMagick.cpp b/src/grafix/ImageFilter_ImageMagick.cpp
+index 6ae6c680..d806b83b 100644
+--- a/src/grafix/ImageFilter_ImageMagick.cpp
++++ b/src/grafix/ImageFilter_ImageMagick.cpp
+@@ -44,7 +44,7 @@
+ #endif
+ 
+ #ifdef HAVE_IMAGEMAGICK
+-#include <wand/MagickWand.h>
++#include <MagickWand/MagickWand.h>
+ #endif
+ #include "ppl7.h"
+ #include "ppl7-grafix.h"
+-- 
+2.35.1
+
