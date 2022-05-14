@@ -1,0 +1,101 @@
+diff --git a/plugins/gtkui/Makefile.am b/plugins/gtkui/Makefile.am
+index dd342768a..7d2b07176 100644
+--- a/plugins/gtkui/Makefile.am
++++ b/plugins/gtkui/Makefile.am
+@@ -37,8 +37,6 @@ GTKUI_SOURCES = \
+     namedicons.c namedicons.h\
+     pltmenu.c\
+     tfimport.c tfimport.h\
+-	medialib/medialibwidget.c medialib/medialibwidget.h\
+-	medialib/medialibmanager.c medialib/medialibmanager.h\
+ 	covermanager/covermanager.c covermanager/covermanager.h\
+ 	covermanager/gobjcache.c covermanager/gobjcache.h\
+ 	covermanager/albumartwidget.c covermanager/albumartwidget.h\
+@@ -51,7 +49,6 @@ GTKUI_SOURCES = \
+ 	playlist/searchplaylist.c playlist/searchplaylist.h\
+ 	prefwin/prefwin.c prefwin/prefwin.h\
+ 	prefwin/prefwinappearance.c prefwin/prefwinappearance.h\
+-	prefwin/prefwinmedialib.c prefwin/prefwinmedialib.h\
+ 	prefwin/prefwinmisc.c prefwin/prefwinmisc.h\
+ 	prefwin/prefwinnetwork.c prefwin/prefwinnetwork.h\
+ 	prefwin/prefwinplayback.c prefwin/prefwinplayback.h\
+diff --git a/plugins/gtkui/gtkui.c b/plugins/gtkui/gtkui.c
+index cc8c545d8..ccecc36ae 100644
+--- a/plugins/gtkui/gtkui.c
++++ b/plugins/gtkui/gtkui.c
+@@ -52,8 +52,10 @@
+ #include "gtkui_api.h"
+ #include "hotkeys.h"
+ #include "interface.h"
++#if ENABLE_MEDIALIB
+ #include "medialib/medialibmanager.h"
+ #include "medialib/medialibwidget.h"
++#endif
+ #include "playlist/plcommon.h"
+ #include "pluginconf.h"
+ #include "prefwin/prefwin.h"
+@@ -1758,7 +1760,9 @@ quit_gtk_cb (gpointer nothing) {
+     trkproperties_modified = 0;
+     trkproperties_destroy ();
+     search_destroy ();
++#if ENABLE_MEDIALIB
+     gtkui_medialib_free();
++#endif
+ #if GTK_CHECK_VERSION(3,10,0) && USE_GTK_APPLICATION
+     g_application_quit (G_APPLICATION (gapp));
+ #else
+diff --git a/plugins/gtkui/prefwin/prefwin.c b/plugins/gtkui/prefwin/prefwin.c
+index 95a07dc63..71f159779 100644
+--- a/plugins/gtkui/prefwin/prefwin.c
++++ b/plugins/gtkui/prefwin/prefwin.c
+@@ -43,7 +43,9 @@
+ #include "../wingeom.h"
+ #include "prefwin.h"
+ #include "prefwinappearance.h"
++#if ENABLE_MEDIALIVB
+ #include "prefwinmedialib.h"
++#endif
+ #include "prefwinmisc.h"
+ #include "prefwinnetwork.h"
+ #include "prefwinplayback.h"
+@@ -150,7 +152,10 @@ on_prefwin_response_cb (GtkDialog *dialog,
+     gtk_widget_destroy (prefwin);
+     deadbeef->conf_save ();
+     prefwin_free_plugins ();
++#if ENABLE_MEDIALIVB
+     prefwin_free_medialib ();
++#endif
++
+     prefwin = NULL;
+ }
+ 
+@@ -192,7 +197,9 @@ _init_prefwin() {
+     // override bar colors
+     prefwin_init_appearance_tab (prefwin);
+ 
++#if ENABLE_MEDIALIB
+     prefwin_init_medialib (prefwin);
++#endif
+ 
+     // network
+     ctmapping_setup_init (w);
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index cba30e16a..cbc1436ce 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -20,7 +20,6 @@ plugins/gtkui/gtk/menus.ui
+ plugins/gtkui/gtkui.c
+ plugins/gtkui/gtkui_deletefromdisk.c
+ plugins/gtkui/interface.c
+-plugins/gtkui/medialib/medialibwidget.c
+ plugins/gtkui/playlist/mainplaylist.c
+ plugins/gtkui/playlist/plcommon.c
+ plugins/gtkui/playlist/searchplaylist.c
+@@ -29,7 +28,6 @@ plugins/gtkui/pltmenu.c
+ plugins/gtkui/pluginconf.c
+ plugins/gtkui/prefwin/prefwin.c
+ plugins/gtkui/prefwin/prefwinappearance.c
+-plugins/gtkui/prefwin/prefwinmedialib.c
+ plugins/gtkui/prefwin/prefwinmisc.c
+ plugins/gtkui/prefwin/prefwinnetwork.c
+ plugins/gtkui/prefwin/prefwinplayback.c
