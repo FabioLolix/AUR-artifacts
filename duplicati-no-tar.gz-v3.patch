@@ -1,0 +1,25 @@
+From 1da4681762af42b0829926a32780931d86eac214 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sat, 11 Jun 2022 19:24:36 +0200
+Subject: [PATCH] duplicati-no-tar.gz-v3
+
+---
+ Installer/Makefile/Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Installer/Makefile/Makefile b/Installer/Makefile/Makefile
+index 550e7b9f1..014ddb11b 100755
+--- a/Installer/Makefile/Makefile
++++ b/Installer/Makefile/Makefile
+@@ -73,8 +73,6 @@ package: build
+ 		rm -rf "duplicati.tar.gz"; \
+ 	fi
+ 	
+-	tar -C "$(PACKAGE_DIR)" -cf "duplicati.tar" .
+-	gzip --best "duplicati.tar"
+ 
+ clean:
+ 	(find "$(SOURCE_DIR)" -type d -name bin -exec rm -rf "{}" \; &> /dev/null) || echo "bin cleaned"
+-- 
+2.36.1
+
