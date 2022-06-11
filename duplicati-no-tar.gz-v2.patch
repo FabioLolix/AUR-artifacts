@@ -1,0 +1,25 @@
+From 1a3c664454392e34830c926bfc018e6d02587a3d Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 13 Feb 2022 19:52:56 +0100
+Subject: [PATCH] no gzip 1
+
+---
+ Installer/Makefile/Makefile | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/Installer/Makefile/Makefile b/Installer/Makefile/Makefile
+index 550e7b9f1..014ddb11b 100755
+--- a/Installer/Makefile/Makefile
++++ b/Installer/Makefile/Makefile
+@@ -73,8 +73,6 @@ package: build
+ 		rm -rf "duplicati.tar.gz"; \
+ 	fi
+ 	
+-	tar -C "$(PACKAGE_DIR)" -cf "duplicati.tar" .
+-	gzip --best "duplicati.tar"
+ 
+ clean:
+ 	(find "$(SOURCE_DIR)" -type d -name bin -exec rm -rf "{}" \; &> /dev/null) || echo "bin cleaned"
+-- 
+2.35.1
+
