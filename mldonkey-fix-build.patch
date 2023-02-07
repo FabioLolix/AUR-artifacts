@@ -1,0 +1,25 @@
+From 861a3082026e8ba325c2178a51ecf688a0862acf Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Mon, 30 Jan 2023 19:17:31 +0100
+Subject: [PATCH] fix build
+
+---
+ src/utils/lib/CryptoPP.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/utils/lib/CryptoPP.h b/src/utils/lib/CryptoPP.h
+index 6c01a929..247ab307 100644
+--- a/src/utils/lib/CryptoPP.h
++++ b/src/utils/lib/CryptoPP.h
+@@ -86,7 +86,7 @@
+ #define CRYPTOPP_H
+ 
+ #include <inttypes.h>
+-#include <caml/config.h>
++
+ #include <stdio.h>
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+-- 
+2.39.1
+
