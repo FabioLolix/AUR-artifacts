@@ -1,0 +1,61 @@
+diff --git a/src/data/compat/Proton.vala b/src/data/compat/Proton.vala
+index ab9d0c7..1a2d2ff 100644
+--- a/src/data/compat/Proton.vala
++++ b/src/data/compat/Proton.vala
+@@ -88,14 +88,21 @@ namespace GameHub.Data.Compat
+ 			else
+ 			{
+ 				File? proton_dir = null;
+-				if(Steam.find_app_install_dir(appid, out proton_dir))
++                if(appid.has_prefix("custom")) {
++                    proton_dir = File.new_for_path(Environment.get_home_dir ()).get_child (".steam").get_child ("steam").get_child ("compatibilitytools.d").get_child (appname);
++                    name = appname;
++                    executable = proton_dir.get_child("proton");
++					installed = executable.query_exists();
++					wine_binary = proton_dir.get_child("dist").query_exists() ? proton_dir.get_child("dist/bin/wine") : proton_dir.get_child("files/bin/wine");
++                }
++				else if(Steam.find_app_install_dir(appid, out proton_dir))
+ 				{
+ 					if(proton_dir != null)
+ 					{
+ 						name = appname ?? proton_dir.get_basename();
+ 						executable = proton_dir.get_child("proton");
+ 						installed = executable.query_exists();
+-						wine_binary = proton_dir.get_child("dist/bin/wine");
++						wine_binary = proton_dir.get_child("dist").query_exists() ? proton_dir.get_child("dist/bin/wine") : proton_dir.get_child("files/bin/wine");
+ 					}
+ 				}
+ 				else
+@@ -358,6 +365,19 @@ namespace GameHub.Data.Compat
+ 				}
+ 			}
+ 
++			//Scan for custom Proton
++            var compattools_dir = FSUtils.file(FSUtils.Paths.Steam.Home).get_child ("steam").get_child ("compatibilitytools.d");
++			if (compattools_dir.query_file_type (0) == FileType.DIRECTORY) {
++                var enumerator = compattools_dir.enumerate_children (FileAttribute.STANDARD_NAME, 0);
++                FileInfo file_info;
++                while ((file_info = enumerator.next_file ()) != null) {
++                    var name = file_info.get_name ();
++                    if (name.down().contains("proton")) {
++                        versions.add(new Proton("custom", name));
++                    }
++                }
++            }
++
+ 			if(versions.size > 0)
+ 			{
+ 				versions.sort((first, second) => {
+diff --git a/src/utils/BinaryVDF.vala b/src/utils/BinaryVDF.vala
+index 4bc885e..0f20beb 100644
+--- a/src/utils/BinaryVDF.vala
++++ b/src/utils/BinaryVDF.vala
+@@ -301,7 +301,7 @@ namespace GameHub.Utils
+ 					var appid = stream.read_uint32();
+ 					if(appid == 0) break;
+ 
+-					stream.seek(44, SeekType.CUR);
++					stream.seek(64, SeekType.CUR);
+ 
+ 					var app = BinaryVDF.Node.read(stream, appid.to_string());
+ 					if(app != null)
