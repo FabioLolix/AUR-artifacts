@@ -1,0 +1,31 @@
+From 8d4b33292c16c748b359a0b2a4b512223febc5ba Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sat, 6 May 2023 12:28:25 +0200
+Subject: [PATCH] use llvm 14 only
+
+---
+ build_odin.sh | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/build_odin.sh b/build_odin.sh
+index 9f4e7101a..be06575e1 100755
+--- a/build_odin.sh
++++ b/build_odin.sh
+@@ -93,13 +93,7 @@ config_linux() {
+ 	: ${LLVM_CONFIG=}
+ 
+ 	if [ ! "$LLVM_CONFIG" ]; then
+-		if [ -x "$(command -v llvm-config)" ]; then
+-			LLVM_CONFIG=llvm-config
+-		elif [ -x "$(command -v llvm-config-11)" ]; then
+-			LLVM_CONFIG=llvm-config-11
+-		elif [ -x "$(command -v llvm-config-11-64)" ]; then
+-			LLVM_CONFIG=llvm-config-11-64
+-		elif [ -x "$(command -v llvm-config-14)" ]; then
++		if [ -x "$(command -v llvm-config-14)" ]; then
+ 			LLVM_CONFIG=llvm-config-14
+ 		else
+ 			panic "Unable to find LLVM-config"
+-- 
+2.40.1
+
