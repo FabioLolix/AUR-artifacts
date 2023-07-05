@@ -1,0 +1,21 @@
+From 93bd9fe07e250bdac948ae6f2c2cc749f165f0e9 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Tue, 13 Jun 2023 23:07:22 +0200
+Subject: [PATCH] COMP: add missing header with GCC 13.1.1
+
+---
+ .../src/itkMathematicalMorphologyEnums.cxx                       | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Modules/Filtering/MathematicalMorphology/src/itkMathematicalMorphologyEnums.cxx b/Modules/Filtering/MathematicalMorphology/src/itkMathematicalMorphologyEnums.cxx
+index e840c43db70..73857ea9c2d 100644
+--- a/Modules/Filtering/MathematicalMorphology/src/itkMathematicalMorphologyEnums.cxx
++++ b/Modules/Filtering/MathematicalMorphology/src/itkMathematicalMorphologyEnums.cxx
+@@ -16,6 +16,7 @@
+  *
+  *=========================================================================*/
+ 
++#include "itkIntTypes.h"
+ #include "itkMathematicalMorphologyEnums.h"
+ 
+ namespace itk
