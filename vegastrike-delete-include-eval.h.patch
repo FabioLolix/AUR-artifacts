@@ -1,0 +1,50 @@
+From 8b8282e5f02b1013b8c89363cb0c0a3b84a47ec9 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Tue, 15 Aug 2023 00:01:33 +0200
+Subject: [PATCH] delete #include <eval.h>
+
+---
+ engine/src/python/init.cpp           | 1 -
+ engine/src/python/python_class.h     | 1 -
+ engine/src/python/python_compile.cpp | 1 -
+ 3 files changed, 3 deletions(-)
+
+diff --git a/engine/src/python/init.cpp b/engine/src/python/init.cpp
+index 731d80c34..b76e71f88 100644
+--- a/engine/src/python/init.cpp
++++ b/engine/src/python/init.cpp
+@@ -38,7 +38,6 @@
+ #include <pyerrors.h>
+ #include <pythonrun.h>
+ #include <compile.h>
+-#include <eval.h>
+ #include <stdio.h>
+ #include <math.h>
+ 
+diff --git a/engine/src/python/python_class.h b/engine/src/python/python_class.h
+index 54142a240..8d5d71b1f 100644
+--- a/engine/src/python/python_class.h
++++ b/engine/src/python/python_class.h
+@@ -49,7 +49,6 @@
+ #include "init.h"
+ #include "cmd/script/pythonmission.h"
+ #include <compile.h>
+-#include <eval.h>
+ #include "python/python_compile.h"
+ #include "cmd/ai/fire.h"
+ #include <memory>
+diff --git a/engine/src/python/python_compile.cpp b/engine/src/python/python_compile.cpp
+index fda7bea5b..0a13e741d 100644
+--- a/engine/src/python/python_compile.cpp
++++ b/engine/src/python/python_compile.cpp
+@@ -27,7 +27,6 @@
+ #include "cmd/unit_generic.h"
+ #include "python_compile.h"
+ #include <compile.h>
+-#include <eval.h>
+ #include "configxml.h"
+ #include "vs_globals.h"
+ #include "vsfilesystem.h"
+-- 
+2.41.0
+
