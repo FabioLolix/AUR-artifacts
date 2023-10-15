@@ -1,0 +1,25 @@
+From 0cdab620bb4caf67ccc3884c8af99b43d38e227c Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 15 Oct 2023 08:38:13 +0200
+Subject: [PATCH] std::cerr fix
+
+---
+ engine/src/gldrv/winsys.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/engine/src/gldrv/winsys.cpp b/engine/src/gldrv/winsys.cpp
+index d76040185..ed53cc5fe 100644
+--- a/engine/src/gldrv/winsys.cpp
++++ b/engine/src/gldrv/winsys.cpp
+@@ -904,7 +904,7 @@ void winsys_atexit( winsys_atexit_func_t func )
+ {
+     static bool called = false;
+     if (called) {
+-        cerr << "winsys_atexit called twice\n";
++        std::cerr << "winsys_atexit called twice\n";
+         BOOST_LOG_TRIVIAL(error) << "winsys_atexit called twice\n";
+         VSFileSystem::flushLogs();
+     }
+-- 
+2.42.0
+
