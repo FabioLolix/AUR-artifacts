@@ -1,0 +1,25 @@
+From 2bd8de93e2c55624d5bb99d45b88da681199609f Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sat, 10 Jun 2023 13:57:53 +0200
+Subject: [PATCH] sane version fix
+
+---
+ sane/version.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sane/version.hpp b/sane/version.hpp
+index 11b5f29..7d175dd 100644
+--- a/sane/version.hpp
++++ b/sane/version.hpp
+@@ -37,7 +37,7 @@ extern "C" {                    // needed until sane-backends-1.0.14
+ #include <sane/sane.h>
+ }
+ 
+-#if !((SANE_MAJOR == SANE_CURRENT_MAJOR) && (SANE_MINOR == 0))
++#if !((SANE_MAJOR == SANE_CURRENT_MAJOR))
+ #error "SANE installation violates versioning portability constraints."
+ #endif
+ 
+-- 
+2.41.0
+
