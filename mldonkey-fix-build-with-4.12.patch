@@ -1,0 +1,27 @@
+From a153f0f7a4826d86d51d4bacedc0330b70fcbc34 Mon Sep 17 00:00:00 2001
+From: ygrek <ygrek@autistici.org>
+Date: Fri, 7 Jan 2022 13:01:40 -0500
+Subject: [PATCH] fix build with 4.12
+
+(OCaml configured without safe-string)
+
+close #71
+---
+ src/networks/donkey/donkeyClient.ml | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/networks/donkey/donkeyClient.ml b/src/networks/donkey/donkeyClient.ml
+index 3d28134c..f65fa5c7 100644
+--- a/src/networks/donkey/donkeyClient.ml
++++ b/src/networks/donkey/donkeyClient.ml
+@@ -810,10 +810,6 @@ another better way, since this functionnality is still useful...
+           query_id ip port id
+         end
+ 
+-
+-external hash_param : int -> int -> 'a -> int = "caml_hash_univ_param" "noalloc"
+-let hash x = hash_param 10 100 x
+-
+ let shared_of_file file =
+   match file.file_shared with
+     | None  -> None
