@@ -1,0 +1,46 @@
+From 9f219e96fbd8d77fa8a00407b536398063b06d02 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Fri, 2 May 2025 23:19:30 +0200
+Subject: [PATCH] cmake_minimum_version
+
+---
+ yabause/src/core/m68k/musashi/CMakeLists.txt | 2 +-
+ yabause/src/tools/libchdr/CMakeLists.txt     | 2 +-
+ yabause/src/tools/mini18n/CMakeLists.txt     | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/yabause/src/core/m68k/musashi/CMakeLists.txt b/yabause/src/core/m68k/musashi/CMakeLists.txt
+index 133692ca9..f2e65a84a 100644
+--- a/yabause/src/core/m68k/musashi/CMakeLists.txt
++++ b/yabause/src/core/m68k/musashi/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ project(m68kmake)
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.5)
+ 
+ add_executable(m68kmake m68kmake.c)
+ 
+diff --git a/yabause/src/tools/libchdr/CMakeLists.txt b/yabause/src/tools/libchdr/CMakeLists.txt
+index 34df19c68..b752bb983 100644
+--- a/yabause/src/tools/libchdr/CMakeLists.txt
++++ b/yabause/src/tools/libchdr/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(chdr C)
+ 
+diff --git a/yabause/src/tools/mini18n/CMakeLists.txt b/yabause/src/tools/mini18n/CMakeLists.txt
+index 7a0572079..fc077da2b 100644
+--- a/yabause/src/tools/mini18n/CMakeLists.txt
++++ b/yabause/src/tools/mini18n/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ project(mini18n)
+ 
+ set(MINI18N_VERSION_MAJOR 0)
+-- 
+2.49.0
+
